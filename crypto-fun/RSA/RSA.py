@@ -17,7 +17,7 @@ def gcd (a, b):
     return a
 
 
-def isPrime (n):
+def is_prime (n):
     """Returns true if n is prime"""
 
     for i in range(2, int(sqrt(n)) + 1):
@@ -26,7 +26,7 @@ def isPrime (n):
     return True
 
 
-def searchPrime (max):
+def search_prime (max):
     """Searches for and returns prime number within given limit"""
 
     p = randint(3, max)
@@ -35,7 +35,7 @@ def searchPrime (max):
     if p & 1 == 0:
         p += 1
 
-    while not isPrime(p):
+    while not is_prime(p):
         p += 2
 
     # Error if no prime in range
@@ -45,11 +45,11 @@ def searchPrime (max):
     return p
 
 
-def initMode ():
+def init_mode ():
     """Generates mode n and totient of n"""
 
-    p = searchPrime(MAX)
-    q = searchPrime(MAX)
+    p = search_prime(MAX)
+    q = search_prime(MAX)
 
     # Catching the unlikely event of identical prime numbers
     if p == q:
@@ -61,7 +61,7 @@ def initMode ():
     return n, phi
 
 
-def getKeypair (phi):
+def get_keypair (phi):
     """Returns the key parameters d and e"""
 
     e = randint(1, phi - 1)
@@ -74,8 +74,7 @@ def getKeypair (phi):
     return e, d
 
 
-def ENC (m, e, n):
-    """Returns encrypted cipher"""
+def encrypt (m, e, n):
 
     # This implementation does not work with large messages
     if m > n:
@@ -84,8 +83,7 @@ def ENC (m, e, n):
     return (m ** e) % n
 
 
-def DEC (c, d, n):
-    """Returns decrypted plaintext"""
+def decrypt (c, d, n):
 
     # This implementation does not work with large ciphers
     if c > n:

@@ -1,15 +1,17 @@
 import RSA
 
-if __name__ == "__main__":
-
-    n, phi = RSA.initMode()
-    e, d = RSA.getKeypair(phi)
+def main ():
+    n, phi = RSA.init_mode()
+    e, d = RSA.get_keypair(phi)
 
     m = 21
     print(f"Message: {m}")
 
-    c = RSA.ENC(m, e, n)
+    c = RSA.encrypt(m, e, n)
     print(f"Cipher: {c}")
 
-    m = RSA.DEC(c, d, n)
+    m = RSA.decrypt(c, d, n)
     print(f"Decrypted message: {m}")
+
+if __name__ == "__main__":
+    main()
